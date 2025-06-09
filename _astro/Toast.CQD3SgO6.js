@@ -1,0 +1,1 @@
+import{j as t}from"./jsx-runtime.D_zvdyIk.js";import{r as o}from"./index.BJfUAbRs.js";function a(){return o.useEffect(()=>{document.getElementById("toast")},[]),t.jsx("div",{id:"toast",className:"fixed bottom-4 right-4 hidden p-4 rounded-lg shadow-lg text-white text-sm transition-opacity duration-300 opacity-0"})}export{a as default};
