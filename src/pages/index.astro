@@ -1,0 +1,346 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ParticlesBackground from '../components/ParticlesBackground.jsx';
+import DeviceSlider from '../components/DeviceSlider.jsx';
+---
+
+<Layout
+  title="Neon Injector - Best Mobile Legends Skin Injector"
+  description="Experience the ease of using Mobile Legends visual skins with Neon Injector. Works on all Android devices."
+>
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <main class="flex-1">
+      <ParticlesBackground client:load />
+      <section class="min-h-screen flex flex-col items-center justify-center text-center relative z-10 px-4 sm:px-6">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-neon-purple dark:text-neon-purple">
+          Neon <span class="text-neon-purple-light dark:text-neon-purple-light">Injector</span>
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl mt-4 max-w-xl text-gray-300 dark:text-light-text">
+          The Best Application Injector for Mobile Legends. Experience the ease of using visual skins without any hassle. Works on all Androids.
+        </p>
+        <div class="mt-6 grid grid-cols-2 gap-4 w-full max-w-xs sm:max-w-md">
+          <button id="downloadBtn" class="px-4 py-2 bg-neon-purple text-white dark:text-white rounded-lg shadow-neon-glow hover:bg-neon-purple-light transition-colors text-sm sm:text-base">Download</button>
+          <a href="/docs" class="px-4 py-2 bg-transparent text-neon-purple dark:text-neon-purple rounded-lg border border-neon-purple hover:bg-neon-purple-dark dark:hover:bg-transparent transition-colors text-sm sm:text-base">View Docs</a>
+        </div>
+        <div class="mt-6 w-full max-w-2xl">
+          <div class="flex justify-center mb-4" id="ratingInput" role="radiogroup" aria-label="Rate this app">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <button
+                class="starBtn focus:outline-none"
+                data-rating={star}
+                key={star}
+                role="radio"
+                aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
+              >
+                <svg class="w-6 h-6 text-gray-400 hover:text-yellow-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </button>
+            ))}
+          </div>
+          <div class="grid grid-cols-1 text-xs text-gray-300 dark:text-light-text" itemscope itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="itemReviewed" content="Neon Injector" />
+            <meta itemprop="ratingCount" content="0" id="ratingCountMeta" />
+            <meta itemprop="ratingValue" content="0.0" id="ratingValueMeta" />
+            <table class="w-full border-collapse border border-neon-purple-dark">
+              <thead>
+                <th class="px-3 py-1.5 text-center text-neon-purple dark:text-neon-purple font-semibold border border-neon-purple-dark">Detail</th>
+                <th class="px-3 py-1.5 text-center text-neon-purple dark:text-neon-purple font-semibold border border-neon-purple-dark">Information</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Total Downloads
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark"><span id="totalDownloads">0</span></td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-star class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Rating
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">
+                    <div class="flex items-center flex-wrap gap-1">
+                      <div class="flex space-x-0.5 mr-1" id="avgRatingStars" aria-label="Average rating"></div>
+                      <span id="totalRatings" class="whitespace-normal break-words">0 reviews</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Name
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">Neon Injector</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Publisher
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">Agung Developer</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Category
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">Tools</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Version
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">1.0</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Size
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">8MB</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Package Name
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">com.neon.injector</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Price
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">Free</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    Requires
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">Works on All Android</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-1.5 flex items-center text-left border border-neon-purple-dark">
+                    <import-icon-info class="w-4 h-4 mr-1.5 text-neon-purple" />
+                    APK Features
+                  </td>
+                  <td class="px-3 py-1.5 text-left border border-neon-purple-dark">Unlock All Skin</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Toast Notification Container -->
+        <div id="toast" class="fixed bottom-4 right-4 hidden p-4 rounded-lg shadow-lg text-white text-sm transition-opacity duration-300 opacity-0"></div>
+      </section>
+      <section class="py-12 sm:py-16 relative z-10 px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-neon-purple dark:text-neon-purple">App Preview</h2>
+        <DeviceSlider client:load />
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<script>
+  function showToast(message, type = 'error') {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = `fixed bottom-4 right-4 p-4 rounded-lg shadow-lg text-white text-sm transition-opacity duration-300 opacity-100 ${
+      type === 'error' ? 'bg-red-500' : 'bg-green-500'
+    }`;
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 300);
+    }, 3000);
+  }
+
+  async function getClientInfo() {
+    const userAgent = navigator.userAgent;
+    return { userAgent };
+  }
+
+  function renderStars(rating, container, interactive = false) {
+    container.innerHTML = '';
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5;
+    for (let i = 1; i <= 5; i++) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'w-4 h-4');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('aria-hidden', interactive ? 'false' : 'true');
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z');
+      if (i <= fullStars) {
+        svg.setAttribute('fill', '#facc15');
+      } else if (i === fullStars + 1 && halfStar) {
+        svg.setAttribute('fill', 'url(#halfGrad)');
+        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        const linearGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        linearGradient.setAttribute('id', 'halfGrad');
+        linearGradient.setAttribute('x1', '0%');
+        linearGradient.setAttribute('x2', '100%');
+        const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop1.setAttribute('offset', '50%');
+        stop1.setAttribute('stop-color', '#facc15');
+        const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop2.setAttribute('offset', '50%');
+        stop2.setAttribute('stop-color', '#9ca3af');
+        linearGradient.appendChild(stop1);
+        linearGradient.appendChild(stop2);
+        defs.appendChild(linearGradient);
+        svg.appendChild(defs);
+      } else {
+        svg.setAttribute('fill', '#9ca3af');
+      }
+      svg.appendChild(path);
+      container.appendChild(svg);
+    }
+  }
+
+  async function fetchStats() {
+    try {
+      const response = await fetch('https://myapi.videyhost.my.id/api/?action=get_stats&token=AgungDeveloper');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      if (data.success) {
+        document.getElementById('totalDownloads').textContent = data.total_downloads || 0;
+        document.getElementById('totalRatings').textContent = data.total_ratings ? `${data.total_ratings} reviews` : '0 reviews';
+        document.getElementById('ratingCountMeta').content = data.total_ratings || 0;
+        document.getElementById('ratingValueMeta').content = data.average_rating ? data.average_rating.toFixed(1) : '0.0';
+        renderStars(data.average_rating || 0, document.getElementById('avgRatingStars'));
+      } else {
+        showToast('Failed to load statistics.', 'error');
+      }
+    } catch (error) {
+      showToast('Error loading statistics. Please try again.', 'error');
+    }
+  }
+
+  document.getElementById('downloadBtn').addEventListener('click', async () => {
+    try {
+      const { userAgent } = await getClientInfo();
+      const response = await fetch('https://myapi.videyhost.my.id/api/?action=download&token=AgungDeveloper', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userAgent })
+      });
+      const data = await response.json();
+      if (data.success) {
+        document.getElementById('totalDownloads').textContent = data.total_downloads;
+        showToast('Download recorded successfully!', 'success');
+      } else if (data.message === 'This device has already downloaded the app') {
+        showToast('You have already downloaded the app.', 'error');
+      } else {
+        showToast(data.message || 'Failed to record download.', 'error');
+      }
+    } catch (error) {
+      showToast('Error processing download. Please try again.', 'error');
+    } finally {
+      window.location.href = '/download';
+    }
+  });
+
+  let selectedRating = 0;
+  const starButtons = document.querySelectorAll('.starBtn');
+  starButtons.forEach((button, index) => {
+    button.addEventListener('click', async () => {
+      try {
+        selectedRating = parseInt(button.dataset.rating);
+        const { userAgent } = await getClientInfo();
+        const response = await fetch('https://myapi.videyhost.my.id/api/?action=rate&token=AgungDeveloper', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rating: selectedRating, userAgent })
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        if (data.success) {
+          document.getElementById('totalRatings').textContent = `${data.total_ratings} reviews`;
+          document.getElementById('ratingCountMeta').content = data.total_ratings;
+          document.getElementById('ratingValueMeta').content = data.average_rating.toFixed(1);
+          renderStars(data.average_rating, document.getElementById('avgRatingStars'));
+          starButtons.forEach((btn, i) => {
+            const svg = btn.querySelector('svg');
+            if (i < index) {
+              svg.setAttribute('fill', '#facc15');
+              svg.classList.remove('text-gray-400');
+            } else {
+              svg.setAttribute('fill', 'none');
+              svg.classList.add('text-gray-400');
+            }
+          });
+          showToast('Rating submitted successfully!', 'success');
+        } else {
+          showToast(data.message || 'Failed to submit rating.', 'error');
+        }
+      } catch (error) {
+        showToast('Error submitting rating. Please try again.', 'error');
+      }
+    });
+
+    button.addEventListener('mouseenter', () => {
+      starButtons.forEach((btn, i) => {
+        const svg = btn.querySelector('svg');
+        if (i <= index) {
+          svg.setAttribute('fill', '#facc15');
+          svg.classList.remove('text-gray-400');
+        } else {
+          svg.setAttribute('fill', 'none');
+          svg.classList.add('text-gray-400');
+        }
+      });
+    });
+
+    button.addEventListener('mouseleave', () => {
+      starButtons.forEach((btn, i) => {
+        const svg = btn.querySelector('svg');
+        if (i < selectedRating) {
+          svg.setAttribute('fill', '#facc15');
+          svg.classList.remove('text-gray-400');
+        } else {
+          svg.setAttribute('fill', 'none');
+          svg.classList.add('text-gray-400');
+        }
+      });
+    });
+
+    button.addEventListener('focus', () => {
+      starButtons.forEach((btn, i) => {
+        const svg = btn.querySelector('svg');
+        if (i <= index) {
+          svg.setAttribute('fill', '#facc15');
+          svg.classList.remove('text-gray-400');
+        } else {
+          svg.setAttribute('fill', 'none');
+          svg.classList.add('text-gray-400');
+        }
+      });
+    });
+
+    button.addEventListener('blur', () => {
+      starButtons.forEach((btn, i) => {
+        const svg = btn.querySelector('svg');
+        if (i < selectedRating) {
+          svg.setAttribute('fill', '#facc15');
+          svg.classList.remove('text-gray-400');
+        } else {
+          svg.setAttribute('fill', 'none');
+          svg.classList.add('text-gray-400');
+        }
+      });
+    });
+  });
+
+  fetchStats();
+</script>

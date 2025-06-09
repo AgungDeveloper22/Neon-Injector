@@ -1,0 +1,45 @@
+---
+import Header from '../components/Header.jsx';
+import Sidebar from '../components/Sidebar.jsx';
+import Footer from '../components/Footer.jsx';
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{Astro.props.title} | Neon Injector</title>
+    <meta name="description" content={Astro.props.description} />
+    <meta name="keywords" content="Neon Injector, Mobile Legends, skin injector, Android, iOS, gaming" />
+    <meta name="author" content="Neon Injector Team" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={Astro.props.title} />
+    <meta property="og:description" content={Astro.props.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://neon-injector.my.id" />
+    <meta property="og:image" content="https://neon-injector.my.id/og-image.jpg" />
+    <meta property="og:site_name" content="Neon Injector" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={Astro.props.title} />
+    <meta name="twitter:description" content={Astro.props.description} />
+    <meta name="twitter:image" content="https://neon-injector.my.id/og-image.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-dark-bg dark:bg-light-bg">
+    <Header client:load />
+    <div class="flex flex-1">
+      <Sidebar client:load />
+      <main class="flex-1">
+        <slot />
+      </main>
+    </div>
+    <div class="w-full">
+      <Footer client:load />
+    </div>
+  </body>
+</html>
