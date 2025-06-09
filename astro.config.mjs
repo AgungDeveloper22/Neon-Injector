@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   integrations: [react(), tailwind(), sitemap()],
-  site: 'https://neon-injector.my.id', // Ganti dengan domain resmi
-  output: 'static', // Aktifkan mode SSG
+  site: 'https://AgungDeveloper22.github.io/Neon-Injector/',
+  output: 'static',
 });
