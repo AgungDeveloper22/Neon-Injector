@@ -47,21 +47,21 @@ export default function ParticlesBackground() {
     () => ({
       background: { color: { value: isDark ? '#f5f5f5' : '#0f0824' } },
       particles: {
-        number: { value: 70, density: { enable: true, value_area: 800 } }, // Increased to 70 for more connections
+        number: { value: 70, density: { enable: true, value_area: 800 } },
         color: { value: '#8b5cf6' },
         shape: { type: 'circle' },
-        opacity: { value: 0.4, random: false }, // Slightly higher opacity for visibility
-        size: { value: 4, random: true, anim: { enable: false } }, // Larger particles
+        opacity: { value: 0.4, random: false },
+        size: { value: 4, random: true, anim: { enable: false } },
         links: {
           enable: true,
-          distance: 200, // Increased for more connections
+          distance: 200,
           color: '#a78bfa',
-          opacity: 0.3, // Balanced opacity
-          width: 1, // Slightly thicker lines
+          opacity: 0.3,
+          width: 1,
         },
         move: {
           enable: true,
-          speed: 1.5, // Balanced speed
+          speed: 1.5,
           direction: 'none',
           random: false,
           straight: false,
@@ -70,13 +70,13 @@ export default function ParticlesBackground() {
       },
       interactivity: {
         events: {
-          onHover: { enable: false }, // Disabled for performance
-          onClick: { enable: false }, // Disabled for performance
+          onHover: { enable: false },
+          onClick: { enable: false },
         },
       },
       performance: {
-        fpsLimit: 30, // Lower FPS for performance
-        detectRetina: false, // Disable retina detection
+        fpsLimit: 30,
+        detectRetina: false,
       },
     }),
     [isDark, isVisible]
