@@ -8,6 +8,10 @@ export function formatDate(timestamp) {
   });
 }
 
+export function formatNumber(number) {
+  return new Intl.NumberFormat('en-US', { notation: 'compact' }).format(number);
+}
+
 export async function getClientInfo() {
   const userAgent = navigator.userAgent;
   return { userAgent };
