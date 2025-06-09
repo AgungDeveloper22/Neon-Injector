@@ -14,12 +14,12 @@ import Toast from '../components/Toast.jsx';
 >
   <div class="flex flex-col md:flex-row min-h-screen">
     <main class="flex-1">
-      <ParticlesBackground client:load />
+      <ParticlesBackground client:visible />
       <HeroSection client:load />
-      <DeviceSlider client:load />
-      <FeaturesCard client:load />
-      <CommentsSection client:load />
-      <Toast client:load />
+      <DeviceSlider client:visible />
+      <FeaturesCard client:visible />
+      <CommentsSection client:visible />
+      <Toast client:idle />
     </main>
   </div>
 </Layout>

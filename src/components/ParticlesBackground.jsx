@@ -4,8 +4,28 @@ import { loadSlim } from '@tsparticles/slim';
 
 export default function ParticlesBackground() {
   const [isDark, setIsDark] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.querySelector('#particlesBackground');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     });
@@ -21,46 +41,50 @@ export default function ParticlesBackground() {
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isVisible]);
 
   const options = useMemo(
     () => ({
       background: { color: { value: isDark ? '#f5f5f5' : '#0f0824' } },
       particles: {
-        number: { value: 100, density: { enable: true, value_area: 800 } },
+        number: { value: 70, density: { enable: true, value_area: 800 } }, // Increased to 70 for more connections
         color: { value: '#8b5cf6' },
         shape: { type: 'circle' },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
+        opacity: { value: 0.4, random: false }, // Slightly higher opacity for visibility
+        size: { value: 4, random: true, anim: { enable: false } }, // Larger particles
         links: {
           enable: true,
-          distance: 150,
+          distance: 200, // Increased for more connections
           color: '#a78bfa',
-          opacity: 0.4,
-          width: 1,
+          opacity: 0.3, // Balanced opacity
+          width: 1, // Slightly thicker lines
         },
         move: {
           enable: true,
-          speed: 2,
+          speed: 1.5, // Balanced speed
           direction: 'none',
-          random: true,
+          random: false,
           straight: false,
           outModes: { default: 'out' },
         },
       },
       interactivity: {
         events: {
-          onHover: { enable: true, mode: 'connect' },
-          onClick: { enable: true, mode: 'push' },
-        },
-        modes: {
-          connect: { distance: 200, links: { opacity: 0.6 } },
-          push: { quantity: 4 },
+          onHover: { enable: false }, // Disabled for performance
+          onClick: { enable: false }, // Disabled for performance
         },
       },
+      performance: {
+        fpsLimit: 30, // Lower FPS for performance
+        detectRetina: false, // Disable retina detection
+      },
     }),
-    [isDark]
+    [isDark, isVisible]
   );
+
+  if (!isVisible) {
+    return <div id="particlesBackground" className="absolute inset-0"></div>;
+  }
 
   return <Particles id="tsparticles" options={options} />;
 }

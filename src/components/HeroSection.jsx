@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { formatNumber, getClientInfo, showToast } from '../utils';
 import Swal from 'sweetalert2';
+import IconStar from './IconStar.jsx';
 
 const HeroSection = () => {
   const [stats, setStats] = useState({ total_downloads: 0, total_ratings: 0, average_rating: 0 });
@@ -184,19 +185,11 @@ const HeroSection = () => {
               disabled={!!userRating}
               aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
             >
-              <svg
+              <IconStar
                 className={`w-6 h-6 ${selectedRating >= star ? 'fill-yellow-400' : 'text-gray-400'} transition-colors`}
                 fill={selectedRating >= star ? '#facc15' : 'none'}
                 stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                />
-              </svg>
+              />
             </button>
           ))}
         </div>
@@ -230,7 +223,7 @@ const HeroSection = () => {
                   <div className="flex items-center flex-wrap gap-1">
                     <div className="flex space-x-0.5 mr-1" id="avgRatingStars" aria-label="Average rating">
                       {[...Array(5)].map((_, i) => (
-                        <svg
+                        <IconStar
                           key={i}
                           className="w-4 h-4"
                           fill={
@@ -240,7 +233,6 @@ const HeroSection = () => {
                               ? 'url(#halfGrad)'
                               : '#9ca3af'
                           }
-                          viewBox="0 0 24 24"
                         >
                           {i === Math.floor(stats.average_rating) && stats.average_rating % 1 >= 0.5 && (
                             <defs>
@@ -250,8 +242,7 @@ const HeroSection = () => {
                               </linearGradient>
                             </defs>
                           )}
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                        </svg>
+                        </IconStar>
                       ))}
                     </div>
                     <span>{formatNumber(stats.total_ratings)} reviews</span>

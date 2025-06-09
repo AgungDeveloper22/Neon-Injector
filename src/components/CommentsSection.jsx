@@ -11,8 +11,28 @@ const CommentsSection = () => {
   const [lastCommentsHash, setLastCommentsHash] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [allComments, setAllComments] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.querySelector('#commentsSection');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     async function init() {
       const { userAgent } = await getClientInfo();
       const ip = await fetch('https://api.ipify.org?format=json').then((res) => res.json()).then((data) => data.ip);
@@ -25,7 +45,7 @@ const CommentsSection = () => {
     init();
 
     return () => clearInterval(pollInterval);
-  }, []);
+  }, [isVisible]);
 
   useEffect(() => {
     if (isModalOpen) {
@@ -222,7 +242,7 @@ const CommentsSection = () => {
             text: 'Error updating comment. Please try again.',
             icon: 'error',
             customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
-          });
+            });
         }
       }
     });
@@ -275,14 +295,18 @@ const CommentsSection = () => {
             text: 'Error deleting comment. Please try again.',
             icon: 'error',
             customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
-          });
+            });
         }
       }
     });
   }
 
+  if (!isVisible) {
+    return <div id="commentsSection" className="h-96"></div>;
+  }
+
   return (
-    <section className="py-12 sm:py-16 relative z-10 px-4 sm:px-6 bg-gray-900">
+    <section id="commentsSection" className="py-12 sm:py-16 relative z-10 px-4 sm:px-6 bg-gray-900">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-neon-purple dark:text-neon-purple">User Comments</h2>
       <div className="max-w-2xl mx-auto">
         <div id="commentFormContainer" className="mb-8">
@@ -404,7 +428,6 @@ const CommentsSection = () => {
         )}
       </div>
 
-      {/* Modal for All Comments */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-gray-800 rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
