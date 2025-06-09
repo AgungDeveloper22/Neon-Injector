@@ -10,12 +10,7 @@ export default defineConfig({
   output: 'static',
   vite: {
     ssr: {
-      noExternal: ['@tsparticles/react', '@tsparticles/slim', '@react-three/fiber', '@react-three/drei'],
-    },
-    build: {
-      rollupOptions: {
-        external: [],
-      },
+      noExternal: ['@tsparticles/react', '@tsparticles/slim'],
     },
     optimizeDeps: {
       exclude: ['@tsparticles/slim'],

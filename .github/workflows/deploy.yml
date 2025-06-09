@@ -17,8 +17,6 @@ jobs:
           cache: 'npm'
       - name: Install Dependencies
         run: npm ci
-      - name: Fix Audit Issues
-        run: npm audit fix
       - name: Build Astro
         uses: withastro/action@v3
         with:

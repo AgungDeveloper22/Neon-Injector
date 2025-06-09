@@ -30,10 +30,10 @@ export function showToast(message, type = 'info') {
   }
 }
 
-export async function generateIdentifier(ip, userAgent) {
+export async function generateIdentifier(timestamp) {
   const hash = await crypto.subtle.digest(
     'SHA-256',
-    new TextEncoder().encode(ip + userAgent)
+    new TextEncoder().encode(timestamp)
   );
   return Array.from(new Uint8Array(hash))
     .map((b) => b.toString(16).padStart(2, '0'))
