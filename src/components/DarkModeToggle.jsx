@@ -10,28 +10,22 @@ export default function DarkModeToggle() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
     setIsDark(initialDark);
-    if (initialDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', initialDark);
   }, []);
 
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    if (!isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
+    setIsDark((prev) => {
+      const newTheme = !prev;
+      document.documentElement.classList.toggle('dark', newTheme);
+      localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+      return newTheme;
+    });
   };
 
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-12 h-6 bg-dark-bg dark:bg-light-bg rounded-full p-1 flex items-center transition-colors duration-300 shadow-neon-glow"
+      className="relative w-12 h-6 bg-[var(--bg-color)] rounded-full p-1 flex items-center transition-colors duration-200 shadow-neon-glow"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <motion.div
@@ -40,9 +34,9 @@ export default function DarkModeToggle() {
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       >
         {isDark ? (
-          <FaSun className="text-white" size={12} />
+          <FaSun className="text-[var(--text-color)]" size={12} />
         ) : (
-          <FaMoon className="text-white" size={12} />
+          <FaMoon className="text-[var(--text-color)]" size={12} />
         )}
       </motion.div>
     </button>

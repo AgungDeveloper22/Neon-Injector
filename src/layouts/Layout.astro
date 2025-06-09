@@ -1,6 +1,5 @@
 ---
 import Header from '../components/Header.jsx';
-import Sidebar from '../components/Sidebar.jsx';
 import Footer from '../components/Footer.jsx';
 import '../styles/global.css';
 ---
@@ -12,7 +11,7 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{Astro.props.title} | Neon Injector</title>
     <meta name="description" content={Astro.props.description} />
-    <meta name="keywords" content="Neon Injector, Mobile Legends, skin injector, Android, iOS, gaming" />
+    <meta name="keywords" content="Neon Injector, Mobile Legends, skin injector, Android, gaming" />
     <meta name="author" content="Neon Injector Team" />
     <meta name="robots" content="index, follow" />
     <meta property="og:title" content={Astro.props.title} />
@@ -27,19 +26,14 @@ import '../styles/global.css';
     <meta name="twitter:image" content="https://neon-injector.my.id/og-image.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sansita:wght@400;700;800;900&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="min-h-screen flex flex-col bg-dark-bg dark:bg-light-bg">
+  <body class="min-h-screen flex flex-col bg-[var(--bg-color)]">
     <Header client:load />
-    <div class="flex flex-1">
-      <Sidebar client:load />
-      <main class="flex-1">
-        <slot />
-      </main>
-    </div>
-    <div class="w-full">
-      <Footer client:load />
-    </div>
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer client:load />
   </body>
 </html>

@@ -45,23 +45,23 @@ export default function ParticlesBackground() {
 
   const options = useMemo(
     () => ({
-      background: { color: { value: isDark ? '#f5f5f5' : '#0f0824' } },
+      background: { color: { value: 'transparent' } },
       particles: {
-        number: { value: 70, density: { enable: true, value_area: 800 } },
+        number: { value: 50, density: { enable: true, value_area: 800 } },
         color: { value: '#8b5cf6' },
         shape: { type: 'circle' },
-        opacity: { value: 0.4, random: false },
-        size: { value: 4, random: true, anim: { enable: false } },
+        opacity: { value: 0.3, random: true },
+        size: { value: 3, random: true },
         links: {
           enable: true,
-          distance: 200,
+          distance: 150,
           color: '#a78bfa',
-          opacity: 0.3,
+          opacity: 0.2,
           width: 1,
         },
         move: {
           enable: true,
-          speed: 1.5,
+          speed: 1,
           direction: 'none',
           random: false,
           straight: false,
@@ -75,11 +75,11 @@ export default function ParticlesBackground() {
         },
       },
       performance: {
-        fpsLimit: 30,
-        detectRetina: false,
+        fpsLimit: 60,
+        detectRetina: true,
       },
     }),
-    [isDark, isVisible]
+    [isVisible]
   );
 
   if (!isVisible) {

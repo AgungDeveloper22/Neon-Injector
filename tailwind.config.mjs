@@ -16,6 +16,9 @@ export default {
       boxShadow: {
         'neon-glow': '0 0 8px rgba(139, 92, 246, 0.5), 0 0 16px rgba(139, 92, 246, 0.3)',
       },
+      fontFamily: {
+        sansita: ['Sansita', 'sans-serif'],
+      },
     },
   },
   plugins: [],

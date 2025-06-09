@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { formatDate, getClientInfo, showToast, generateIdentifier } from '../utils';
+import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import { formatDate, getClientInfo, showToast, generateIdentifier } from '../utils';
 
-const CommentsSection = () => {
+export default function CommentsSection() {
   const [hasCommented, setHasCommented] = useState(false);
   const [userComment, setUserComment] = useState(null);
   const [comments, setComments] = useState([]);
@@ -128,7 +128,7 @@ const CommentsSection = () => {
         title: 'Error!',
         text: 'Name and message are required.',
         icon: 'error',
-        customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+        customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
       });
       return;
     }
@@ -140,8 +140,8 @@ const CommentsSection = () => {
       confirmButtonText: 'Yes, submit',
       cancelButtonText: 'Cancel',
       customClass: {
-        popup: 'bg-gray-800 text-white',
-        confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg',
+        popup: 'bg-[var(--bg-color)] text-[var(--text-color)]',
+        confirmButton: 'btn-neon',
         cancelButton: 'bg-gray-600 text-white px-4 py-2 rounded-lg',
       },
     }).then(async (result) => {
@@ -163,14 +163,14 @@ const CommentsSection = () => {
               title: 'Success!',
               text: 'Comment submitted successfully!',
               icon: 'success',
-              customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+              customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
           } else {
             Swal.fire({
               title: 'Error!',
               text: data.message || 'Failed to submit comment.',
               icon: 'error',
-              customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+              customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
           }
         } catch (error) {
@@ -178,7 +178,7 @@ const CommentsSection = () => {
             title: 'Error!',
             text: 'Error submitting comment. Please try again.',
             icon: 'error',
-            customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+            customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
           });
         }
       }
@@ -193,7 +193,7 @@ const CommentsSection = () => {
         title: 'Error!',
         text: 'Name and message are required.',
         icon: 'error',
-        customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+        customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
       });
       return;
     }
@@ -205,8 +205,8 @@ const CommentsSection = () => {
       confirmButtonText: 'Yes, update',
       cancelButtonText: 'Cancel',
       customClass: {
-        popup: 'bg-gray-800 text-white',
-        confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg',
+        popup: 'bg-[var(--bg-color)] text-[var(--text-color)]',
+        confirmButton: 'btn-neon',
         cancelButton: 'bg-gray-600 text-white px-4 py-2 rounded-lg',
       },
     }).then(async (result) => {
@@ -226,14 +226,14 @@ const CommentsSection = () => {
               title: 'Success!',
               text: 'Comment updated successfully!',
               icon: 'success',
-              customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+              customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
           } else {
             Swal.fire({
               title: 'Error!',
               text: data.message || 'Failed to update comment.',
               icon: 'error',
-              customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+              customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
           }
         } catch (error) {
@@ -241,7 +241,7 @@ const CommentsSection = () => {
             title: 'Error!',
             text: 'Error updating comment. Please try again.',
             icon: 'error',
-            customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+            customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
         }
       }
@@ -257,8 +257,8 @@ const CommentsSection = () => {
       confirmButtonText: 'Yes, delete',
       cancelButtonText: 'Cancel',
       customClass: {
-        popup: 'bg-gray-800 text-white',
-        confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg',
+        popup: 'bg-[var(--bg-color)] text-[var(--text-color)]',
+        confirmButton: 'btn-neon',
         cancelButton: 'bg-gray-600 text-white px-4 py-2 rounded-lg',
       },
     }).then(async (result) => {
@@ -279,14 +279,14 @@ const CommentsSection = () => {
               title: 'Success!',
               text: 'Comment deleted successfully!',
               icon: 'success',
-              customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+              customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
           } else {
             Swal.fire({
               title: 'Error!',
               text: data.message || 'Failed to delete comment.',
               icon: 'error',
-              customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+              customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
           }
         } catch (error) {
@@ -294,7 +294,7 @@ const CommentsSection = () => {
             title: 'Error!',
             text: 'Error deleting comment. Please try again.',
             icon: 'error',
-            customClass: { popup: 'bg-gray-800 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+            customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
         }
       }
@@ -306,30 +306,30 @@ const CommentsSection = () => {
   }
 
   return (
-    <section id="commentsSection" className="py-12 sm:py-16 relative z-10 px-4 sm:px-6 bg-gray-900">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-neon-purple dark:text-neon-purple">User Comments</h2>
+    <section id="commentsSection" className="py-12 sm:py-16 relative z-10 container bg-[var(--bg-color)]">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">User Comments</h2>
       <div className="max-w-2xl mx-auto">
         <div id="commentFormContainer" className="mb-8">
           <form id="commentForm" className={hasCommented ? 'hidden' : ''} onSubmit={handleCommentSubmit}>
             <div className="mb-4">
-              <label htmlFor="commentName" className="block text-sm font-medium text-gray-300">
+              <label htmlFor="commentName" className="block text-sm font-medium text-[var(--text-color)]">
                 Name
               </label>
               <input
                 type="text"
                 id="commentName"
-                className="mt-1 block w-full px-3 py-2 bg-gray-800 text-white border border-neon-purple rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
+                className="mt-1 block w-full px-3 py-2 bg-[var(--bg-color)] text-[var(--text-color)] border-neon rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
                 maxLength="50"
                 required
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="commentMessage" className="block text-sm font-medium text-gray-300">
+              <label htmlFor="commentMessage" className="block text-sm font-medium text-[var(--text-color)]">
                 Comment
               </label>
               <textarea
                 id="commentMessage"
-                className="mt-1 block w-full px-3 py-2 bg-gray-800 text-white border border-neon-purple rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
+                className="mt-1 block w-full px-3 py-2 bg-[var(--bg-color)] text-[var(--text-color)] border-neon rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
                 rows="4"
                 maxLength="500"
                 required
@@ -337,32 +337,32 @@ const CommentsSection = () => {
             </div>
             <button
               type="submit"
-              className="px-4 py-2 bg-neon-purple text-white rounded-lg shadow-neon-glow hover:bg-neon-purple-light transition-colors"
+              className="btn-neon"
             >
               Submit Comment
             </button>
           </form>
           <div id="editCommentForm" className={hasCommented ? '' : 'hidden'}>
             <div className="mb-4">
-              <label htmlFor="editCommentName" className="block text-sm font-medium text-gray-300">
+              <label htmlFor="editCommentName" className="block text-sm font-medium text-[var(--text-color)]">
                 Name
               </label>
               <input
                 type="text"
                 id="editCommentName"
-                className="mt-1 block w-full px-3 py-2 bg-gray-800 text-white border border-neon-purple rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
+                className="mt-1 block w-full px-3 py-2 bg-[var(--bg-color)] text-[var(--text-color)] border-neon rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
                 maxLength="50"
                 required
                 defaultValue={userComment?.name || ''}
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="editCommentMessage" className="block text-sm font-medium text-gray-300">
+              <label htmlFor="editCommentMessage" className="block text-sm font-medium text-[var(--text-color)]">
                 Comment
               </label>
               <textarea
                 id="editCommentMessage"
-                className="mt-1 block w-full px-3 py-2 bg-gray-800 text-white border border-neon-purple rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
+                className="mt-1 block w-full px-3 py-2 bg-[var(--bg-color)] text-[var(--text-color)] border-neon rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
                 rows="4"
                 maxLength="500"
                 required
@@ -372,7 +372,7 @@ const CommentsSection = () => {
             <button
               id="submitEditComment"
               onClick={handleEditComment}
-              className="px-4 py-2 bg-neon-purple text-white rounded-lg shadow-neon-glow hover:bg-neon-purple-light transition-colors"
+              className="btn-neon"
             >
               Update Comment
             </button>
@@ -380,19 +380,19 @@ const CommentsSection = () => {
         </div>
         <div id="commentsList" className="space-y-4">
           {comments.length === 0 ? (
-            <p className="text-gray-300 text-center">No comments yet. Be the first to comment!</p>
+            <p className="text-[var(--text-color)] text-center">No comments yet. Be the first to comment!</p>
           ) : (
             comments.map((comment) => (
-              <div key={comment.identifier} className="bg-gray-800 p-4 rounded-lg border border-neon-purple-dark">
+              <div key={comment.identifier} className="bg-[var(--bg-color)] p-4 rounded-lg border-neon">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-semibold text-neon-purple">{comment.name}</h3>
-                  <span className="text-xs text-gray-400">{formatDate(comment.timestamp)}</span>
+                  <h3 className="text-lg font-semibold">{comment.name}</h3>
+                  <span className="text-xs text-[var(--text-color)]">{formatDate(comment.timestamp)}</span>
                 </div>
-                <p className="text-gray-300">{comment.message}</p>
+                <p className="text-[var(--text-color)]">{comment.message}</p>
                 {comment.identifier === userIdentifier && (
                   <div className="mt-2 flex space-x-2">
                     <button
-                      className="editCommentBtn px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                      className="px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
                       onClick={() => {
                         document.getElementById('editCommentForm').classList.remove('hidden');
                         document.getElementById('commentForm').classList.add('hidden');
@@ -405,7 +405,7 @@ const CommentsSection = () => {
                       Edit
                     </button>
                     <button
-                      className="deleteCommentBtn px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                      className="px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600"
                       onClick={handleDeleteComment}
                     >
                       Delete
@@ -419,7 +419,7 @@ const CommentsSection = () => {
         {totalComments > 10 && (
           <div className="mt-4 text-center">
             <button
-              className="text-neon-purple hover:underline"
+              className="text-[var(--heading-color)] hover:underline"
               onClick={() => setIsModalOpen(true)}
             >
               View All Comments
@@ -430,11 +430,11 @@ const CommentsSection = () => {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-800 rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+          <div className="bg-[var(--bg-color)] rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold text-neon-purple">All Comments</h3>
+              <h3 className="text-xl font-bold">All Comments</h3>
               <button
-                className="text-gray-300 hover:text-white"
+                className="text-[var(--text-color)] hover:text-neon-purple-light"
                 onClick={() => setIsModalOpen(false)}
               >
                 ✕
@@ -442,15 +442,15 @@ const CommentsSection = () => {
             </div>
             <div className="space-y-4">
               {allComments.length === 0 ? (
-                <p className="text-gray-300 text-center">No comments available.</p>
+                <p className="text-[var(--text-color)] text-center">No comments available.</p>
               ) : (
                 allComments.map((comment) => (
-                  <div key={comment.identifier} className="bg-gray-900 p-4 rounded-lg border border-neon-purple-dark">
+                  <div key={comment.identifier} className="bg-[var(--bg-color)] p-4 rounded-lg border-neon">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-neon-purple">{comment.name}</h4>
-                      <span className="text-xs text-gray-400">{formatDate(comment.timestamp)}</span>
+                      <h4 className="text-lg font-semibold">{comment.name}</h4>
+                      <span className="text-xs text-[var(--text-color)]">{formatDate(comment.timestamp)}</span>
                     </div>
-                    <p className="text-gray-300">{comment.message}</p>
+                    <p className="text-[var(--text-color)]">{comment.message}</p>
                   </div>
                 ))
               )}
@@ -460,6 +460,4 @@ const CommentsSection = () => {
       )}
     </section>
   );
-};
-
-export default CommentsSection;
+}

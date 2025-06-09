@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const features = [
@@ -46,7 +46,7 @@ const features = [
   },
 ];
 
-const FeaturesCard = () => {
+export default function FeaturesCard() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -71,15 +71,15 @@ const FeaturesCard = () => {
   }
 
   return (
-    <section id="featuresSection" className="py-12 sm:py-16 relative z-10 px-4 sm:px-6">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-purple-600 dark:text-purple-400">
-        Apptastic Features: <span className="text-purple-500 dark:text-purple-300">Neon Injector Toolkit for Success</span>
+    <section id="featuresSection" className="py-12 sm:py-16 relative z-10 container">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
+        Apptastic Features: <span className="text-neon-purple-light">Neon Injector Toolkit for Success</span>
       </h2>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="rounded-lg p-6 flex flex-col items-center text-center transition-transform hover:scale-105"
+            className="rounded-lg p-6 flex flex-col items-center text-center transition-transform hover:scale-105 bg-[var(--bg-color)] border-neon"
           >
             <DotLottieReact
               src={feature.animation}
@@ -88,13 +88,11 @@ const FeaturesCard = () => {
               className="w-full h-40 mb-4"
               aria-label={feature.alt}
             />
-            <h3 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-2">{feature.title}</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">{feature.description}</p>
+            <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+            <p className="text-[var(--text-color)] text-sm">{feature.description}</p>
           </div>
         ))}
       </div>
     </section>
   );
-};
-
-export default FeaturesCard;
+}

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { formatNumber, getClientInfo, showToast } from '../utils';
 import Swal from 'sweetalert2';
 import IconStar from './IconStar.jsx';
+import { formatNumber, getClientInfo, showToast } from '../utils';
 
-const HeroSection = () => {
+export default function HeroSection() {
   const [stats, setStats] = useState({ total_downloads: 0, total_ratings: 0, average_rating: 0 });
   const [userRating, setUserRating] = useState(null);
   const [selectedRating, setSelectedRating] = useState(0);
@@ -53,8 +53,8 @@ const HeroSection = () => {
       confirmButtonText: 'Yes, submit',
       cancelButtonText: 'Cancel',
       customClass: {
-        popup: 'bg-gray-900 text-white',
-        confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg',
+        popup: 'bg-[var(--bg-color)] text-[var(--text-color)]',
+        confirmButton: 'btn-neon',
         cancelButton: 'bg-gray-600 text-white px-4 py-2 rounded-lg',
       },
     }).then(async (result) => {
@@ -80,14 +80,14 @@ const HeroSection = () => {
               title: 'Success!',
               text: 'Rating submitted successfully!',
               icon: 'success',
-              customClass: { popup: 'bg-gray-900 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+              customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
           } else {
             Swal.fire({
               title: 'Error!',
               text: data.message || 'Failed to submit rating.',
               icon: 'error',
-              customClass: { popup: 'bg-gray-900 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+              customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
             });
           }
         } catch (error) {
@@ -95,7 +95,7 @@ const HeroSection = () => {
             title: 'Error!',
             text: 'Error submitting rating. Please try again.',
             icon: 'error',
-            customClass: { popup: 'bg-gray-900 text-white', confirmButton: 'bg-neon-purple text-white px-4 py-2 rounded-lg' },
+            customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
           });
         }
       }
@@ -127,24 +127,21 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center relative z-10 px-4 sm:px-6">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-neon-purple dark:text-neon-purple">
-        Neon <span className="text-neon-purple-light dark:text-neon-purple-light">Injector</span>
-      </h1>
-      <p className="text-lg sm:text-xl md:text-2xl mt-4 max-w-xl text-gray-300 dark:text-gray-300">
+    <section className="min-h-screen flex flex-col items-center justify-center text-center relative z-10 container">
+      <p className="text-lg sm:text-xl md:text-2xl mt-4 max-w-xl text-[var(--text-color)]">
         The Best Application Injector for Mobile Legends. Experience the ease of using visual skins without any hassle. Works on all Androids.
       </p>
       <div className="mt-6 grid grid-cols-2 gap-4 w-full max-w-xs sm:max-w-md">
         <button
           id="downloadBtn"
           onClick={handleDownload}
-          className="px-4 py-2 bg-neon-purple text-white dark:text-white rounded-lg shadow-neon-glow hover:bg-neon-purple-light transition-colors text-sm sm:text-base"
+          className="btn-neon text-sm sm:text-base"
         >
           Download
         </button>
         <a
           href="/docs"
-          className="px-4 py-2 bg-transparent text-neon-purple dark:text-neon-purple rounded-lg border border-neon-purple hover:bg-neon-purple-dark dark:hover:bg-transparent transition-colors text-sm sm:text-base"
+          className="px-4 py-2 bg-transparent text-[var(--heading-color)] rounded-lg border-neon hover:bg-neon-purple-dark/20 text-sm sm:text-base"
         >
           View Docs
         </a>
@@ -158,33 +155,29 @@ const HeroSection = () => {
         <meta itemProp="price" content="0" />
         <meta itemProp="priceCurrency" content="USD" />
         <meta itemProp="author" content="Agung Developer" />
-        <div className="grid grid-cols-1 text-xs text-gray-300 dark:text-gray-300">
+        <div className="grid grid-cols-1 text-xs text-[var(--text-color)]">
           <div itemProp="aggregateRating" itemScope itemType="http://schema.org/AggregateRating">
             <meta itemProp="ratingValue" content={stats.average_rating ? stats.average_rating.toFixed(1) : '0.0'} />
             <meta itemProp="ratingCount" content={stats.total_ratings || 0} />
-            <table className="w-full border-collapse border border-neon-purple-dark text-left">
+            <table className="w-full border-collapse border-neon text-left">
               <thead>
                 <tr>
-                  <th className="px-3 py-2 text-neon-purple dark:text-neon-purple font-semibold border border-neon-purple-dark">
-                    Detail
-                  </th>
-                  <th className="px-3 py-2 text-neon-purple dark:text-neon-purple font-semibold border border-neon-purple-dark">
-                    Information
-                  </th>
+                  <th className="px-3 py-2 font-semibold border-neon">Detail</th>
+                  <th className="px-3 py-2 font-semibold border-neon">Information</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Total Downloads
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Total Downloads
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">{formatNumber(stats.total_downloads)}</td>
+                  <td className="px-3 py-2 border-neon">{formatNumber(stats.total_downloads)}</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">⭐</span> Rating
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">⭐</span> Rating
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">
+                  <td className="px-3 py-2 border-neon">
                     <div className="flex items-center flex-wrap gap-1 whitespace-normal">
                       <div className="flex space-x-0.5" id="avgRatingStars" aria-label="Average rating">
                         {[...Array(5)].map((_, i) => (
@@ -218,58 +211,58 @@ const HeroSection = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Name
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Name
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">Neon Injector</td>
+                  <td className="px-3 py-2 border-neon">Neon Injector</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Publisher
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Publisher
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">Agung Developer</td>
+                  <td className="px-3 py-2 border-neon">Agung Developer</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Category
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Category
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">Tools</td>
+                  <td className="px-3 py-2 border-neon">Tools</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Version
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Version
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">1.0</td>
+                  <td className="px-3 py-2 border-neon">1.0</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Size
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Size
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">8MB</td>
+                  <td className="px-3 py-2 border-neon">8MB</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Package Name
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Package Name
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">com.neon.injector</td>
+                  <td className="px-3 py-2 border-neon">com.neon.injector</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Price
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Price
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">Free</td>
+                  <td className="px-3 py-2 border-neon">Free</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> Requires
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> Requires
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">Works on All Android</td>
+                  <td className="px-3 py-2 border-neon">Works on All Android</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 flex items-center border border-neon-purple-dark">
-                    <span className="w-4 h-4 mr-1.5 text-neon-purple">ℹ️</span> APK Features
+                  <td className="px-3 py-2 flex items-center border-neon">
+                    <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]">ℹ️</span> APK Features
                   </td>
-                  <td className="px-3 py-2 border border-neon-purple-dark">Unlock All Skin</td>
+                  <td className="px-3 py-2 border-neon">Unlock All Skin</td>
                 </tr>
               </tbody>
             </table>
@@ -278,6 +271,4 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

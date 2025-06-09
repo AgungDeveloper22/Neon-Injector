@@ -6,15 +6,14 @@ export default function Hamburger() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    const sidebar = document.getElementById('sidebar');
+    const sidebar = document.getElementById('mobile-menu');
     if (sidebar) {
-      sidebar.classList.toggle('translate-x-0');
-      sidebar.classList.toggle('-translate-x-full');
+      sidebar.classList.toggle('hidden');
     }
   };
 
   return (
-    <button onClick={toggleMenu} className="md:hidden text-neon-purple dark:text-neon-purple focus:outline-none">
+    <button onClick={toggleMenu} className="md:hidden text-[var(--heading-color)] focus:outline-none">
       <motion.svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <motion.path
           strokeLinecap="round"
