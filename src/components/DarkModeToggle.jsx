@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
@@ -25,7 +25,7 @@ export default function DarkModeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-12 h-6 bg-[var(--bg-color)] rounded-full p-1 flex items-center transition-colors duration-200 shadow-neon-glow"
+      className="relative w-12 h-6 bg-[var(--bg-color)] rounded-full p-1 flex items-center transition-colors duration-200 shadow-neon-glow focus:outline-none focus:ring-2 focus:ring-neon-purple"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <motion.div
@@ -34,9 +34,9 @@ export default function DarkModeToggle() {
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       >
         {isDark ? (
-          <FaSun className="text-[var(--text-color)]" size={12} />
+          <FaSun className="text-[var(--text-color)]" size={12} aria-hidden="true" />
         ) : (
-          <FaMoon className="text-[var(--text-color)]" size={12} />
+          <FaMoon className="text-[var(--text-color)]" size={12} aria-hidden="true" />
         )}
       </motion.div>
     </button>

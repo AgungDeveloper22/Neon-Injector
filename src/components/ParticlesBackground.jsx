@@ -47,7 +47,7 @@ export default function ParticlesBackground() {
     () => ({
       background: { color: { value: 'transparent' } },
       particles: {
-        number: { value: 50, density: { enable: true, value_area: 800 } },
+        number: { value: 30, density: { enable: true, value_area: 800 } }, // Reduced particle count
         color: { value: '#8b5cf6' },
         shape: { type: 'circle' },
         opacity: { value: 0.3, random: true },
@@ -61,7 +61,7 @@ export default function ParticlesBackground() {
         },
         move: {
           enable: true,
-          speed: 1,
+          speed: 0.5, // Reduced speed
           direction: 'none',
           random: false,
           straight: false,
@@ -75,7 +75,7 @@ export default function ParticlesBackground() {
         },
       },
       performance: {
-        fpsLimit: 60,
+        fpsLimit: 30, // Reduced FPS for better performance
         detectRetina: true,
       },
     }),
@@ -83,7 +83,7 @@ export default function ParticlesBackground() {
   );
 
   if (!isVisible) {
-    return <div id="particlesBackground" className="absolute inset-0"></div>;
+    return <div id="particlesBackground" className="absolute inset-0" role="presentation"></div>;
   }
 
   return <Particles id="tsparticles" options={options} />;

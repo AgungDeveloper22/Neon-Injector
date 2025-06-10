@@ -22,11 +22,11 @@ export default function DeviceSlider() {
   }, []);
 
   if (!isVisible) {
-    return <div id="phonePreview" className="h-96"></div>;
+    return <div id="phonePreview" className="h-96" role="region" aria-label="Phone preview placeholder"></div>;
   }
 
   return (
-    <section id="phonePreview" className="py-12 sm:py-16 relative z-10 container">
+    <section id="phonePreview" className="py-12 sm:py-16 relative z-10 container" role="region" aria-label="App preview section">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
         App: <span className="text-neon-purple-light">Preview</span>
       </h2>
@@ -40,13 +40,14 @@ export default function DeviceSlider() {
             title="Phone Preview"
             className="w-full h-full border-none"
             loading="lazy"
+            aria-label="Mobile Legends skin preview"
           />
         </div>
         <div className="absolute bottom-0 left-0 w-full h-12 bg-[var(--bg-color)] flex justify-around items-center">
-          <FaHome className="text-[var(--text-color)] text-xl" />
-          <FaSearch className="textciting: text-[var(--text-color)] text-xl" />
-          <FaUser className="text-[var(--text-color)] text-xl" />
-          <FaCog className="text-[var(--text-color)] text-xl" />
+          <FaHome className="text-[var(--text-color)] text-xl" aria-hidden="true" />
+          <FaSearch className="text-[var(--text-color)] text-xl" aria-hidden="true" />
+          <FaUser className="text-[var(--text-color)] text-xl" aria-hidden="true" />
+          <FaCog className="text-[var(--text-color)] text-xl" aria-hidden="true" />
         </div>
       </div>
     </section>

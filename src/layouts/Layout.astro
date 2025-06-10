@@ -18,16 +18,17 @@ import '../styles/global.css';
     <meta property="og:description" content={Astro.props.description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://neon-injector.my.id" />
-    <meta property="og:image" content="https://neon-injector.my.id/og-image.jpg" />
+    <meta property="og:image" content="https://neon-injector.my.id/og-image.webp" />
+    <meta property="og:image:type" content="image/webp" />
     <meta property="og:site_name" content="Neon Injector" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={Astro.props.title} />
     <meta name="twitter:description" content={Astro.props.description} />
-    <meta name="twitter:image" content="https://neon-injector.my.id/og-image.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Sansita:wght@400;700;800;900&display=swap" rel="stylesheet" />
+    <meta name="twitter:image" content="https://neon-injector.my.id/og-image.webp" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sansita:wght@400;700;800;900&display=swap" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sansita:wght@400;700;800;900&display=swap" media="print" onload="this.media='all'" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/global.css" />
   </head>
   <body class="min-h-screen flex flex-col bg-[var(--bg-color)]">
     <Header client:load />

@@ -35,7 +35,7 @@ export default function CommentsSection() {
 
     async function init() {
       const { userAgent } = await getClientInfo();
-      const ip = await fetch('https://api.ipify.org?format=json').then((res) => res.json()).then((data) => data.ip);
+      const ip = await fetch('https://api.ipify.org?format=json', { cache: 'force-cache' }).then((res) => res.json()).then((data) => data.ip);
       const identifier = await generateIdentifier(ip, userAgent);
       setUserIdentifier(identifier);
       fetchUserComment();
@@ -59,7 +59,7 @@ export default function CommentsSection() {
       if (document.visibilityState === 'visible') {
         fetchComments();
       }
-    }, 30000);
+    }, 60000); // Increased polling interval to 60 seconds
   }
 
   async function fetchUserComment() {
@@ -69,6 +69,7 @@ export default function CommentsSection() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userAgent }),
+        cache: 'force-cache',
       });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
@@ -86,7 +87,7 @@ export default function CommentsSection() {
   async function fetchComments() {
     if (document.visibilityState !== 'visible') return;
     try {
-      const response = await fetch('https://myapi.videyhost.my.id/api/?action=get_comments&token=AgungDeveloper&limit=10');
+      const response = await fetch('https://myapi.videyhost.my.id/api/?action=get_comments&token=AgungDeveloper&limit=10', { cache: 'force-cache' });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
       if (data.success) {
@@ -106,7 +107,7 @@ export default function CommentsSection() {
 
   async function fetchAllComments() {
     try {
-      const response = await fetch('https://myapi.videyhost.my.id/api/?action=get_comments&token=AgungDeveloper');
+      const response = await fetch('https://myapi.videyhost.my.id/api/?action=get_comments&token=AgungDeveloper', { cache: 'force-cache' });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
       if (data.success) {
@@ -242,7 +243,7 @@ export default function CommentsSection() {
             text: 'Error updating comment. Please try again.',
             icon: 'error',
             customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
-            });
+          });
         }
       }
     });
@@ -295,22 +296,22 @@ export default function CommentsSection() {
             text: 'Error deleting comment. Please try again.',
             icon: 'error',
             customClass: { popup: 'bg-[var(--bg-color)] text-[var(--text-color)]', confirmButton: 'btn-neon' },
-            });
+          });
         }
       }
     });
   }
 
   if (!isVisible) {
-    return <div id="commentsSection" className="h-96"></div>;
+    return <div id="commentsSection" className="h-96" role="region" aria-label="Comments section placeholder"></div>;
   }
 
   return (
-    <section id="commentsSection" className="py-12 sm:py-16 relative z-10 container bg-[var(--bg-color)]">
+    <section id="commentsSection" className="py-12 sm:py-16 relative z-10 container bg-[var(--bg-color)]" role="region" aria-label="User comments section">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">User Comments</h2>
       <div className="max-w-2xl mx-auto">
         <div id="commentFormContainer" className="mb-8">
-          <form id="commentForm" className={hasCommented ? 'hidden' : ''} onSubmit={handleCommentSubmit}>
+          <form id="commentForm" className={hasCommented ? 'hidden' : ''} onSubmit={handleCommentSubmit} aria-label="Submit a new comment">
             <div className="mb-4">
               <label htmlFor="commentName" className="block text-sm font-medium text-[var(--text-color)]">
                 Name
@@ -321,7 +322,10 @@ export default function CommentsSection() {
                 className="mt-1 block w-full px-3 py-2 bg-[var(--bg-color)] text-[var(--text-color)] border-neon rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
                 maxLength="50"
                 required
+                aria-required="true"
+                aria-describedby="commentNameError"
               />
+              <span id="commentNameError" className="hidden text-red-500 text-sm">Name is required.</span>
             </div>
             <div className="mb-4">
               <label htmlFor="commentMessage" className="block text-sm font-medium text-[var(--text-color)]">
@@ -333,16 +337,20 @@ export default function CommentsSection() {
                 rows="4"
                 maxLength="500"
                 required
+                aria-required="true"
+                aria-describedby="commentMessageError"
               ></textarea>
+              <span id="commentMessageError" className="hidden text-red-500 text-sm">Comment is required.</span>
             </div>
             <button
               type="submit"
               className="btn-neon"
+              aria-label="Submit comment"
             >
               Submit Comment
             </button>
           </form>
-          <div id="editCommentForm" className={hasCommented ? '' : 'hidden'}>
+          <div id="editCommentForm" className={hasCommented ? '' : 'hidden'} aria-label="Edit your comment">
             <div className="mb-4">
               <label htmlFor="editCommentName" className="block text-sm font-medium text-[var(--text-color)]">
                 Name
@@ -353,8 +361,11 @@ export default function CommentsSection() {
                 className="mt-1 block w-full px-3 py-2 bg-[var(--bg-color)] text-[var(--text-color)] border-neon rounded-lg focus:outline-none focus:ring-2 focus:ring-neon-purple"
                 maxLength="50"
                 required
+                aria-required="true"
                 defaultValue={userComment?.name || ''}
+                aria-describedby="editCommentNameError"
               />
+              <span id="editCommentNameError" className="hidden text-red-500 text-sm">Name is required.</span>
             </div>
             <div className="mb-4">
               <label htmlFor="editCommentMessage" className="block text-sm font-medium text-[var(--text-color)]">
@@ -366,33 +377,39 @@ export default function CommentsSection() {
                 rows="4"
                 maxLength="500"
                 required
+                aria-required="true"
                 defaultValue={userComment?.message || ''}
+                aria-describedby="editCommentMessageError"
               ></textarea>
+              <span id="editCommentMessageError" className="hidden text-red-500 text-sm">Comment is required.</span>
             </div>
             <button
               id="submitEditComment"
               onClick={handleEditComment}
               className="btn-neon"
+              aria-label="Update comment"
             >
               Update Comment
             </button>
           </div>
         </div>
-        <div id="commentsList" className="space-y-4">
+        <div id="commentsList" className="space-y-4" role="list" aria-label="List of user comments">
           {comments.length === 0 ? (
             <p className="text-[var(--text-color)] text-center">No comments yet. Be the first to comment!</p>
           ) : (
             comments.map((comment) => (
-              <div key={comment.identifier} className="bg-[var(--bg-color)] p-4 rounded-lg border-neon">
+              <article key={comment.identifier} className="bg-[var(--bg-color)] p-4 rounded-lg border-neon" role="listitem">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-lg font-semibold">{comment.name}</h3>
-                  <span className="text-xs text-[var(--text-color)]">{formatDate(comment.timestamp)}</span>
+                  <time className="text-xs text-[var(--text-color)]" dateTime={comment.timestamp}>
+                    {formatDate(comment.timestamp)}
+                  </time>
                 </div>
                 <p className="text-[var(--text-color)]">{comment.message}</p>
                 {comment.identifier === userIdentifier && (
                   <div className="mt-2 flex space-x-2">
                     <button
-                      className="px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                      className="px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       onClick={() => {
                         document.getElementById('editCommentForm').classList.remove('hidden');
                         document.getElementById('commentForm').classList.add('hidden');
@@ -401,26 +418,29 @@ export default function CommentsSection() {
                           behavior: 'smooth',
                         });
                       }}
+                      aria-label={`Edit comment by ${comment.name}`}
                     >
                       Edit
                     </button>
                     <button
-                      className="px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                      className="px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
                       onClick={handleDeleteComment}
+                      aria-label={`Delete comment by ${comment.name}`}
                     >
                       Delete
                     </button>
                   </div>
                 )}
-              </div>
+              </article>
             ))
           )}
         </div>
         {totalComments > 10 && (
           <div className="mt-4 text-center">
             <button
-              className="text-[var(--heading-color)] hover:underline"
+              className="text-[var(--heading-color)] hover:underline focus:outline-none focus:ring-2 focus:ring-neon-purple"
               onClick={() => setIsModalOpen(true)}
+              aria-label="View all comments"
             >
               View All Comments
             </button>
@@ -429,29 +449,32 @@ export default function CommentsSection() {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" role="dialog" aria-modal="true" aria-label="All comments modal">
           <div className="bg-[var(--bg-color)] rounded-lg p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-bold">All Comments</h3>
               <button
-                className="text-[var(--text-color)] hover:text-neon-purple-light"
+                className="text-[var(--text-color)] hover:text-neon-purple-light focus:outline-none focus:ring-2 focus:ring-neon-purple"
                 onClick={() => setIsModalOpen(false)}
+                aria-label="Close comments modal"
               >
                 ✕
               </button>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4" role="list" aria-label="List of all comments">
               {allComments.length === 0 ? (
                 <p className="text-[var(--text-color)] text-center">No comments available.</p>
               ) : (
                 allComments.map((comment) => (
-                  <div key={comment.identifier} className="bg-[var(--bg-color)] p-4 rounded-lg border-neon">
+                  <article key={comment.identifier} className="bg-[var(--bg-color)] p-4 rounded-lg border-neon" role="listitem">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-lg font-semibold">{comment.name}</h4>
-                      <span className="text-xs text-[var(--text-color)]">{formatDate(comment.timestamp)}</span>
+                      <time className="text-xs text-[var(--text-color)]" dateTime={comment.timestamp}>
+                        {formatDate(comment.timestamp)}
+                      </time>
                     </div>
                     <p className="text-[var(--text-color)]">{comment.message}</p>
-                  </div>
+                  </article>
                 ))
               )}
             </div>

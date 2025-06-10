@@ -57,7 +57,7 @@ export default function FeaturesCard() {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '100px' }
     );
 
     const section = document.querySelector('#featuresSection');
@@ -67,30 +67,39 @@ export default function FeaturesCard() {
   }, []);
 
   if (!isVisible) {
-    return <div id="featuresSection" className="h-96"></div>;
+    return (
+      <div id="featuresSection" className="h-96" role="region" aria-label="Features section placeholder"></div>
+    );
   }
 
   return (
-    <section id="featuresSection" className="py-12 sm:py-16 relative z-10 container">
+    <section
+      id="featuresSection"
+      className="py-12 sm:py-16 relative z-10 container"
+      role="region"
+      aria-label="App features section"
+    >
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
         Apptastic Features: <span className="text-neon-purple-light">Neon Injector Toolkit for Success</span>
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
         {features.map((feature, index) => (
-          <div
+          <article
             key={index}
             className="rounded-lg p-6 flex flex-col items-center text-center transition-transform hover:scale-105 bg-[var(--bg-color)] border-neon"
+            role="listitem"
           >
             <DotLottieReact
               src={feature.animation}
               loop
               autoplay
               className="w-full h-40 mb-4"
-              aria-label={feature.alt}
+              aria-hidden="true"
+              data-testid={`lottie-animation-${index}`}
             />
             <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
             <p className="text-[var(--text-color)] text-sm">{feature.description}</p>
-          </div>
+          </article>
         ))}
       </div>
     </section>

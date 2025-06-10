@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Hamburger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,8 +13,13 @@ export default function Hamburger() {
   };
 
   return (
-    <button onClick={toggleMenu} className="md:hidden text-[var(--heading-color)] focus:outline-none">
-      <motion.svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button
+      onClick={toggleMenu}
+      className="md:hidden text-[var(--heading-color)] focus:outline-none focus:ring-2 focus:ring-neon-purple"
+      aria-label={isOpen ? 'Close mobile menu' : 'Open mobile menu'}
+      aria-expanded={isOpen}
+    >
+      <motion.svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <motion.path
           strokeLinecap="round"
           strokeLinejoin="round"

@@ -3,45 +3,73 @@
 @tailwind utilities;
 
 :root {
-  --bg-color: #0f0824;
-  --text-color: #e5e7eb;
-  --heading-color: #8b5cf6;
+  --bg-color: #ffffff;
+  --text-color: #111827;
+  --heading-color: #5b21b6;
+  --neon-purple: #a855f7;
+  --neon-purple-light: #c084fc;
+  --neon-purple-dark: #7e22ce;
+  --border-neon: #a855f7;
 }
 
-:root.dark {
-  --bg-color: #f5f5f5;
-  --text-color: #1f2937;
-  --heading-color: #a78bfa;
+.dark {
+  --bg-color: #2d3748;
+  --text-color: #f9fafb;
+  --heading-color: #d8b4fe;
+  --neon-purple: #c084fc;
+  --neon-purple-light: #d8b4fe;
+  --neon-purple-dark: #9333ea;
+  --border-neon: #c084fc;
 }
 
 body {
-  @apply bg-[var(--bg-color)] text-[var(--text-color)];
   font-family: 'Sansita', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  @apply text-[var(--heading-color)] font-bold;
-  font-family: 'Sansita', sans-serif;
-}
-
-a, button {
-  @apply transition-colors duration-200;
-}
-
-a:hover, button:hover {
-  @apply text-neon-purple-light;
+  color: var(--text-color);
+  background: var(--bg-color);
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  @apply px-4 sm:px-6 md:px-8 max-w-7xl mx-auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .btn-neon {
-  @apply px-4 py-2 bg-neon-purple text-white rounded-lg shadow-neon-glow hover:bg-neon-purple-light;
+  background: var(--neon-purple);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-neon:hover {
+  background: var(--neon-purple-light);
+  transform: scale(1.05);
+}
+
+.btn-neon:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--neon-purple-dark);
 }
 
 .border-neon {
-  @apply border border-neon-purple-dark;
+  border: 1px solid var(--border-neon);
+}
+
+.shadow-neon-glow {
+  box-shadow: 0 0 10px var(--neon-purple);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
