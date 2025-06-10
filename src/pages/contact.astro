@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact - Neon Injector"
+  description="Reach out to the Neon Injector team for support, feedback, or inquiries about our Mobile Legends skin injection tool."
+>
+  <div class="flex flex-col min-h-screen">
+    <main class="flex-1 pt-16">
+      <section class="container mx-auto px-4 py-16 text-[var(--text-color)]">
+        <h1 class="text-4xl font-bold text-neon-purple mb-8 text-center">Contact Us</h1>
+        <div class="prose max-w-3xl mx-auto mb-8">
+          <p class="mb-4">We’re here to help you get the most out of Neon Injector. Whether you have questions about setup, need troubleshooting assistance, or want to share feedback, our team is ready to assist.</p>
+          <h2 class="text-2xl font-semibold mb-4">Get in Touch</h2>
+          <p class="mb-4">Use the form below to send us a message, or reach out directly via email or Discord. We typically respond within 24-48 hours.</p>
+        </div>
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-[var(--card-bg)] p-6 rounded-lg shadow-lg border border-neon-purple-dark">
+            <h2 class="text-2xl font-semibold mb-4">Send Us a Message</h2>
+            <form action="/submit-contact" method="POST" class="space-y-4">
+              <div>
+                <label for="name" class="block text-sm font-medium">Name</label>
+                <input type="text" id="name" name="name" class="w-full p-2 rounded bg-[var(--input-bg)] text-[var(--text-color)] border border-neon-purple-dark focus:outline-none focus:ring-2 focus:ring-neon-purple" required />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input type="email" id="email" name="email" class="w-full p-2 rounded bg-[var(--input-bg)] text-[var(--text-color)] border border-neon-purple-dark focus:outline-none focus:ring-2 focus:ring-neon-purple" required />
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium">Message</label>
+                <textarea id="message" name="message" rows="5" class="w-full p-2 rounded bg-[var(--input-bg)] text-[var(--text-color)] border border-neon-purple-dark focus:outline-none focus:ring-2 focus:ring-neon-purple" required></textarea>
+              </div>
+              <button type="submit" class="bg-neon-purple hover:bg-neon-purple-light text-white font-bold py-2 px-4 rounded-lg transition duration-300">Submit</button>
+            </form>
+          </div>
+          <div class="mt-8 text-center">
+            <p>Email: <a href="mailto:support@neon-injector.my.id" class="text-neon-purple hover:text-neon-purple-light">support@neon-injector.my.id</a></p>
+            <p>Discord: <a href="https://discord.gg/neoninjector" class="text-neon-purple hover:text-neon-purple-light">Join our server</a></p>
+            <p>Response Time: Within 24-48 hours</p>
+          </div>
+        </div>
+        <img src="/images/contact-support.webp" alt="Support Team" class="w-full max-w-2xl mx-auto rounded-lg mt-8" loading="lazy" />
+      </section>
+    </main>
+  </div>
+</Layout>

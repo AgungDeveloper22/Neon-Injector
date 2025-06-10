@@ -1,22 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ParticlesBackground from '../components/ParticlesBackground.jsx';
 import HeroSection from '../components/HeroSection.jsx';
 import DeviceSlider from '../components/DeviceSlider.jsx';
 import FeaturesCard from '../components/FeaturesCard.jsx';
 import CommentsSection from '../components/CommentsSection.jsx';
 import Toast from '../components/Toast.jsx';
 ---
+
 <Layout
   title="Neon Injector - Best Mobile Legends Skin Injector"
   description="Experience the ease of using Mobile Legends visual skins with Neon Injector. Works on all Android devices."
 >
   <div class="flex flex-col min-h-screen">
-    <main class="flex-1 relative">
-      <ParticlesBackground client:visible />
+    <main class="flex-1 pt-16">
       <HeroSection client:load />
+      <section class="container mx-auto px-4 py-16 text-[var(--text-color)]">
+        <h2 class="text-3xl font-bold text-neon-purple mb-8 text-center">Why Choose Neon Injector?</h2>
+        <div class="prose max-w-3xl mx-auto">
+          <p class="mb-4">Neon Injector is the leading tool for Mobile Legends players looking to enhance their gaming experience with custom skins. Our tool is designed with user safety, ease of use, and compatibility in mind, ensuring you can enjoy visual enhancements without affecting gameplay.</p>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Supports all Android devices running Android 7.0 or higher.</li>
+            <li>Seamless integration with SAF and Shizuku for secure file access.</li>
+            <li>Regular updates to stay compatible with the latest Mobile Legends patches.</li>
+            <li>Intuitive interface designed for gamers of all skill levels.</li>
+            <li>Active community support via Discord and email.</li>
+          </ul>
+          <p class="mt-4">Whether you're a casual player or a dedicated Mobile Legends enthusiast, Neon Injector offers a safe and reliable way to customize your gaming experience.</p>
+        </div>
+      </section>
+      <br>
       <DeviceSlider client:visible />
+      <br>
       <FeaturesCard client:visible />
+      <br>
       <CommentsSection client:visible />
       <Toast client:idle />
     </main>

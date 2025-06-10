@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About - Neon Injector"
+  description="Discover the story behind Neon Injector, our mission, and how we enhance your Mobile Legends experience with custom skins."
+>
+  <div class="flex flex-col min-h-screen">
+    <main class="flex-1 pt-16">
+      <section class="container mx-auto px-4 py-16 text-[var(--text-color)]">
+        <h1 class="text-4xl font-bold text-neon-purple mb-8 text-center">About Neon Injector</h1>
+        <div class="prose max-w-3xl mx-auto">
+          <p class="mb-4">Neon Injector is a premier tool crafted to elevate your Mobile Legends experience by enabling safe and seamless visual skin modifications on Android devices. Since our founding in 2023, we’ve been committed to delivering a high-quality, user-friendly tool that empowers players to personalize their gaming experience.</p>
+          <h2 class="text-2xl font-semibold mb-4">Our Mission</h2>
+          <p class="mb-4">Our mission is to provide Mobile Legends players with a reliable and innovative way to access custom skins without impacting gameplay fairness. We aim to combine cutting-edge technology with a passion for gaming to create a tool that’s both powerful and accessible.</p>
+          <h2 class="text-2xl font-semibold mb-4 mt-8">Our Journey</h2>
+          <p class="mb-4">Started by a small team of gaming enthusiasts, Neon Injector has grown into a trusted tool used by thousands of players worldwide. Key milestones include:</p>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>2023</strong>: Launched Neon Injector v1.0 with basic skin injection capabilities.</li>
+            <li><strong>2024</strong>: Introduced SAF and Shizuku support for enhanced security.</li>
+            <li><strong>2025</strong>: Released v2.3.1 with faster injection and expanded skin library.</li>
+          </ul>
+          <h2 class="text-2xl font-semibold mb-4 mt-8">Why Neon Injector?</h2>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Compatibility with all Android devices (7.0+).</li>
+            <li>Regular updates to match Mobile Legends patches.</li>
+            <li>Active community engagement through Discord and blog updates.</li>
+            <li>Comprehensive <a href="/docs" class="text-neon-purple hover:text-neon-purple-light">documentation</a> for easy setup.</li>
+          </ul>
+          <img src="/images/about-team.webp" alt="Neon Injector Team Working" class="w-full rounded-lg mt-8" loading="lazy" />
+          <p class="mt-4">Ready to transform your Mobile Legends experience? <a href="/download" class="text-neon-purple hover:text-neon-purple-light">Download Neon Injector</a> today or <a href="/contact" class="text-neon-purple hover:text-neon-purple-light">contact us</a> for support.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>

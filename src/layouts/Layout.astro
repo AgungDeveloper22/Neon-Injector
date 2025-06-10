@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
+import ParticlesBackground from '../components/ParticlesBackground.jsx';
 import '../styles/global.css';
 ---
 
@@ -33,6 +34,7 @@ import '../styles/global.css';
   <body class="min-h-screen flex flex-col bg-[var(--bg-color)]">
     <Header client:load />
     <main class="flex-1">
+      <ParticlesBackground client:visible />
       <slot />
     </main>
     <Footer client:load />

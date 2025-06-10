@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Download - Neon Injector"
+  description="Download the latest version of Neon Injector for Mobile Legends skin injection. Compatible with all Android devices."
+>
+  <div class="flex flex-col min-h-screen">
+    <main class="flex-1 pt-16">
+      <section class="container mx-auto px-4 py-16 text-[var(--text-color)]">
+        <h1 class="text-4xl font-bold text-neon-purple mb-8 text-center">Download Neon Injector</h1>
+        <div class="max-w-2xl mx-auto prose">
+          <p class="mb-4">Get the latest version of Neon Injector to start customizing your Mobile Legends skins. Our APK is lightweight, secure, and optimized for performance on all Android devices.</p>
+          <div class="bg-[var(--card-bg)] p-6 rounded-lg shadow-lg border border-neon-purple-dark mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Latest Version: v2.3.1</h2>
+            <p class="mb-4">This version includes improved injection speed, enhanced compatibility with Mobile Legends v1.8.5, and a redesigned skin preview interface.</p>
+            <a
+              href="/downloads/neon-injector-v2.3.1.apk"
+              class="inline-block bg-neon-purple hover:bg-neon-purple-light text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+              download
+            >
+              Download APK
+            </a>
+            <p class="mt-4 text-sm">File Size: 12.5 MB | Updated: June 2025</p>
+          </div>
+          <h2 class="text-2xl font-semibold mb-4">System Requirements</h2>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Android 7.0 (Nougat) or higher</li>
+            <li>Minimum 2GB RAM for smooth performance</li>
+            <li>Shizuku or SAF permissions for file access</li>
+            <li>Mobile Legends v1.7.0 or newer installed</li>
+            <li>At least 100MB free storage</li>
+          </ul>
+          <h2 class="text-2xl font-semibold mb-4 mt-8">Installation Guide</h2>
+          <ol class="list-decimal list-inside space-y-2">
+            <li>Download the APK from the link above.</li>
+            <li>Enable "Install from Unknown Sources" in your Android settings.</li>
+            <li>Open the downloaded APK and follow the on-screen instructions.</li>
+            <li>Grant necessary permissions (SAF or Shizuku) during setup.</li>
+            <li>Launch Neon Injector and start customizing!</li>
+          </ol>
+          <p class="mt-4 text-sm italic">Note: Ensure you download from our official site to avoid malicious versions.</p>
+          <img src="/images/download-guide.webp" alt="Download Guide" class="w-full rounded-lg mt-8" loading="lazy" />
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>

@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Documentation - Neon Injector"
+  description="Comprehensive guide on using Neon Injector, including SAF, Shizuku permissions, and Mobile Legends skin injection steps."
+>
+  <div class="flex flex-col min-h-screen">
+    <main class="flex-1 pt-16">
+      <section class="container mx-auto px-4 py-16 text-[var(--text-color)]">
+        <h1 class="text-4xl font-bold text-neon-purple mb-8 text-center">Neon Injector Documentation</h1>
+        <div class="max-w-3xl mx-auto prose">
+          <p class="mb-4">This documentation provides detailed instructions for setting up and using Neon Injector to apply visual skins in Mobile Legends. Follow these steps carefully to ensure a smooth experience.</p>
+          
+          <h2 class="text-2xl font-semibold mb-4">1. Using SAF (Storage Access Framework)</h2>
+          <p class="mb-4">SAF allows Neon Injector to access specific directories securely without requiring full storage permissions, ensuring compliance with modern Android security standards.</p>
+          <ol class="list-decimal list-inside space-y-2">
+            <li>Open Neon Injector and navigate to Settings > Permissions.</li>
+            <li>Select "Grant SAF Permission" to open the file picker.</li>
+            <li>Locate and select the Mobile Legends data folder (typically <code>/Android/data/com.mobile.legends</code>).</li>
+            <li>Confirm the selection to grant access.</li>
+            <li>Restart Neon Injector to apply the permissions.</li>
+          </ol>
+          <img src="/images/saf-permission.webp" alt="SAF Permission Setup" class="w-full rounded-lg mt-4" loading="lazy" />
+          
+          <h2 class="text-2xl font-semibold mb-4 mt-8">2. Setting Up Shizuku Permissions</h2>
+          <p class="mb-4">Shizuku provides system-level access for advanced features, ideal for users with rooted devices or those comfortable with ADB.</p>
+          <ol class="list-decimal list-inside space-y-2">
+            <li>Download and install Shizuku from the Play Store or <a href="https://github.com/RikkaApps/Shizuku" class="text-neon-purple hover:text-neon-purple-light">GitHub</a>.</li>
+            <li>Start Shizuku using one of these methods:
+              <ul class="list-disc list-inside ml-6 space-y-1">
+                <li><strong>ADB</strong>: Connect your device to a computer and run <code>adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</code>.</li>
+                <li><strong>Root</strong>: Grant root access to Shizuku via its app interface.</li>
+              </ul>
+            </li>
+            <li>Open Neon Injector and select "Link with Shizuku" in the Permissions menu.</li>
+            <li>Approve the permission request in the Shizuku app.</li>
+            <li>Verify the connection in Neon Injector’s status screen.</li>
+          </ol>
+          <img src="/images/shizuku-setup.webp" alt="Shizuku Permission Setup" class="w-full rounded-lg mt-4" loading="lazy" />
+          
+          <h2 class="text-2xl font-semibold mb-4 mt-8">3. Injecting Mobile Legends Skins</h2>
+          <p class="mb-4">Injecting skins with Neon Injector is straightforward. Follow these steps to apply visual skins to Mobile Legends.</p>
+          <ol class="list-decimal list-inside space-y-2">
+            <li>Ensure SAF or Shizuku permissions are granted.</li>
+            <li>Open Neon Injector and go to the "Skin Library" section.</li>
+            <li>Browse or search for your desired skin (e.g., "Epic Alucard Skin").</li>
+            <li>Tap "Inject" and wait for the process to complete (10-20 seconds).</li>
+            <li>Launch Mobile Legends to see the applied skin in-game.</li>
+          </ol>
+          <img src="/images/skin-injection.webp" alt="Skin Injection Process" class="w-full rounded-lg mt-4" loading="lazy" />
+          
+          <h2 class="text-2xl font-semibold mb-4 mt-8">4. Troubleshooting Common Issues</h2>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Injection Failed</strong>: Ensure permissions are correctly set and Mobile Legends is updated.</li>
+            <li><strong>App Crashes</strong>: Clear Neon Injector’s cache in Android settings and restart.</li>
+            <li><strong>Skins Not Showing</strong>: Verify the skin is compatible with your Mobile Legends version.</li>
+          </ul>
+          <p class="mt-4 text-sm italic">Note: Skin injections are visual only and do not alter gameplay. Using third-party tools carries risks, including potential account bans. Always use Neon Injector responsibly.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>
