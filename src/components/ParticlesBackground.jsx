@@ -14,7 +14,7 @@ export default function ParticlesBackground() {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '100px' }
     );
 
     const section = document.querySelector('#particlesBackground');
@@ -47,21 +47,21 @@ export default function ParticlesBackground() {
     () => ({
       background: { color: { value: 'transparent' } },
       particles: {
-        number: { value: 30, density: { enable: true, value_area: 800 } }, // Reduced particle count
-        color: { value: '#8b5cf6' },
+        number: { value: 50, density: { enable: true, value_area: 800 } }, // Increased particles
+        color: { value: '#a855f7' }, // Brighter --neon-purple
         shape: { type: 'circle' },
-        opacity: { value: 0.3, random: true },
+        opacity: { value: 0.4, random: true },
         size: { value: 3, random: true },
         links: {
           enable: true,
-          distance: 150,
-          color: '#a78bfa',
-          opacity: 0.2,
+          distance: 120, // Closer links for more connections
+          color: '#c084fc', // Brighter --neon-purple-light
+          opacity: 0.3, // Slightly more visible
           width: 1,
         },
         move: {
           enable: true,
-          speed: 0.5, // Reduced speed
+          speed: 0.5, // Kept low for performance
           direction: 'none',
           random: false,
           straight: false,
@@ -75,7 +75,7 @@ export default function ParticlesBackground() {
         },
       },
       performance: {
-        fpsLimit: 30, // Reduced FPS for better performance
+        fpsLimit: 30, // Kept low for performance
         detectRetina: true,
       },
     }),
