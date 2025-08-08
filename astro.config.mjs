@@ -5,8 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   integrations: [react(), tailwind(), sitemap()],
-  site: 'https://AgungDeveloper22.github.io/Neon-Injector',
-  base: '/Neon-Injector/',
+  site: 'https://neoninjector.my.id',
+  base: '/',
   output: 'static',
   vite: {
     ssr: {
