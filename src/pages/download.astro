@@ -15,13 +15,14 @@ import Layout from '../layouts/Layout.astro';
           <div class="bg-[var(--card-bg)] p-6 rounded-lg shadow-lg border border-neon-purple-dark mb-8">
             <h2 class="text-2xl font-semibold mb-4">Latest Version: v1.3</h2>
             <p class="mb-4">This version includes improved injection speed, enhanced compatibility with Mobile Legends v1.7.0, and a redesigned skin preview interface.</p>
-            <a
+            <button
               id="download-btn"
               class="inline-block bg-neon-purple hover:bg-neon-purple-light text-white font-bold py-3 px-6 rounded-lg transition duration-300 cursor-pointer"
+              onclick="window.location.href='https://neoninjector.my.id/neon_injector_V_1.3.apk'"
             >
               Download APK
-            </a>
-            <p class="mt-4 text-sm">File Size: 12.5 MB | Updated: June 2025</p>
+            </button>
+            <p class="mt-4 text-sm">File Size: 4.5 MB | Updated: June 2025</p>
           </div>
           <h2 class="text-2xl font-semibold mb-4">System Requirements</h2>
           <ul class="list-disc list-inside space-y-2">
@@ -35,25 +36,14 @@ import Layout from '../layouts/Layout.astro';
           <ol class="list-decimal list-inside space-y-2">
             <li>Download the APK from the link above.</li>
             <li>Enable "Install from Unknown Sources" in your Android settings.</li>
-            <li>Open the downloaded APK and follow the on-screen instructions.</li>
+            <li>Open the downloaded APK dan follow the on-screen instructions.</li>
             <li>Grant necessary permissions (SAF or Shizuku) during setup.</li>
             <li>Launch Neon Injector and start customizing!</li>
-            </ol>
-            <p class="mt-4 text-sm italic">Note: Ensure you download from our official site to avoid malicious versions.</p>
-            <img src="/images/download-guide.webp" alt="Download Guide" class="w-full rounded-lg mt-8" loading="lazy" />
+          </ol>
+          <p class="mt-4 text-sm italic">Note: Ensure you download from our official site to avoid malicious versions.</p>
+          <img src="/images/download-guide.webp" alt="Download Guide" class="w-full rounded-lg mt-8" loading="lazy" />
         </div>
       </section>
     </main>
   </div>
 </Layout>
-
-<script>
-  const downloadBtn = document.getElementById('download-btn');
-  downloadBtn.addEventListener('click', () => {
-    // URL file APK yang ingin diunduh
-    const fileUrl = 'https://neoninjector.my.id/neon_injector_V_1.3.apk';
-    
-    // Perintah untuk memulai unduhan
-    window.location.href = fileUrl;
-  });
-</script>
