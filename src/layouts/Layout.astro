@@ -33,9 +33,11 @@ import '../styles/global.css';
   </head>
   <body class="min-h-screen flex flex-col bg-[var(--bg-color)]">
     <Header client:load />
-    <main class="flex-1">
+    <main class="flex-1 relative">
       <ParticlesBackground client:visible />
-      <slot />
+      <div class="relative z-10">
+        <slot />
+      </div>
     </main>
     <Footer client:load />
   </body>
