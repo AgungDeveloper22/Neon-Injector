@@ -15,14 +15,12 @@ import Layout from '../layouts/Layout.astro';
           <div class="bg-[var(--card-bg)] p-6 rounded-lg shadow-lg border border-neon-purple-dark mb-8">
             <h2 class="text-2xl font-semibold mb-4">Latest Version: v1.3</h2>
             <p class="mb-4">This version includes improved injection speed, enhanced compatibility with Mobile Legends v1.7.0, and a redesigned skin preview interface.</p>
-            <a
-              href="https://neoninjector.my.id/neon_injector_V_1.3.apk"
-              class="inline-block bg-neon-purple hover:bg-neon-purple-light text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-              download="neon_injector_V_1.3.apk"
+            <button
               id="download-btn"
+              class="inline-block bg-neon-purple hover:bg-neon-purple-light text-white font-bold py-3 px-6 rounded-lg transition duration-300 cursor-pointer"
             >
               Download APK
-            </a>
+            </button>
             <p class="mt-4 text-sm">File Size: 4.5 MB | Updated: June 2025</p>
           </div>
           <h2 class="text-2xl font-semibold mb-4">System Requirements</h2>
@@ -49,14 +47,13 @@ import Layout from '../layouts/Layout.astro';
   </div>
 
   <script>
-    // Optional: Add click tracking or fallback for download button
-    document.getElementById('download-btn').addEventListener('click', function (event) {
+    document.getElementById('download-btn').addEventListener('click', function () {
       try {
-        // Attempt to trigger download
-        window.location.href = this.href;
+        // Buka URL di tab baru untuk memicu unduhan
+        window.open('https://neoninjector.my.id/neon_injector_V_1.3.apk', '_blank');
       } catch (error) {
         console.error('Download failed:', error);
-        alert('Failed to start download. Please try copying the link manually or use a different browser.');
+        alert('Gagal memulai unduhan. Coba salin link secara manual atau gunakan browser lain.');
       }
     });
   </script>
