@@ -9,6 +9,8 @@ export default function ParticlesBackground() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if全世界
+
         if (entry.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
@@ -47,21 +49,21 @@ export default function ParticlesBackground() {
     () => ({
       background: { color: { value: 'transparent' } },
       particles: {
-        number: { value: 50, density: { enable: true, value_area: 800 } }, // Increased particles
-        color: { value: '#a855f7' }, // Brighter --neon-purple
+        number: { value: 50, density: { enable: true, value_area: 800 } },
+        color: { value: '#a855f7' },
         shape: { type: 'circle' },
         opacity: { value: 0.4, random: true },
         size: { value: 3, random: true },
         links: {
           enable: true,
-          distance: 120, // Closer links for more connections
-          color: '#c084fc', // Brighter --neon-purple-light
-          opacity: 0.3, // Slightly more visible
+          distance: 120,
+          color: '#c084fc',
+          opacity: 0.3,
           width: 1,
         },
         move: {
           enable: true,
-          speed: 0.5, // Kept low for performance
+          speed: 0.5,
           direction: 'none',
           random: false,
           straight: false,
@@ -75,7 +77,7 @@ export default function ParticlesBackground() {
         },
       },
       performance: {
-        fpsLimit: 30, // Kept low for performance
+        fpsLimit: 30,
         detectRetina: true,
       },
     }),
@@ -83,8 +85,8 @@ export default function ParticlesBackground() {
   );
 
   if (!isVisible) {
-    return <div id="particlesBackground" className="absolute inset-0" role="presentation"></div>;
+    return <div id="particlesBackground" className="absolute inset-0 pointer-events-none z-0" role="presentation"></div>;
   }
 
-  return <Particles id="tsparticles" options={options} />;
+  return <Particles id="tsparticles" options={options} className="absolute inset-0 pointer-events-none z-0" />;
 }
