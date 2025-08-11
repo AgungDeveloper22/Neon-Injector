@@ -9,7 +9,7 @@ import Toast from '../components/Toast.jsx';
 
 <Layout
   title="Neon Injector - Best Mobile Legends Skin Injector"
-  description="Experience the ease of using Mobile Legends visual skins with Neon Injector. Works on all Android devices."
+  description="Discover Neon Injector, the ultimate tool for safe and seamless Mobile Legends skin customization. Compatible with all Android devices, easy to use, and community-driven."
 >
   <div class="flex flex-col min-h-screen">
     <main class="flex-1 pt-16">
@@ -17,22 +17,20 @@ import Toast from '../components/Toast.jsx';
       <section class="container mx-auto px-4 py-16 text-[var(--text-color)]">
         <h2 class="text-3xl font-bold text-neon-purple mb-8 text-center">Why Choose Neon Injector?</h2>
         <div class="prose max-w-3xl mx-auto">
-          <p class="mb-4">Neon Injector is the leading tool for Mobile Legends players looking to enhance their gaming experience with custom skins. Our tool is designed with user safety, ease of use, and compatibility in mind, ensuring you can enjoy visual enhancements without affecting gameplay.</p>
-          <ul class="list-disc list-inside space-y-2">
-            <li>Supports all Android devices running Android 7.0 or higher.</li>
-            <li>Seamless integration with SAF and Shizuku for secure file access.</li>
-            <li>Regular updates to stay compatible with the latest Mobile Legends patches.</li>
-            <li>Intuitive interface designed for gamers of all skill levels.</li>
-            <li>Active community support via Discord and email.</li>
+          <p class="mb-6">Neon Injector is the premier choice for Mobile Legends players seeking to personalize their gaming experience with custom skins. Designed with safety, ease of use, and compatibility in mind, our tool allows you to enhance your heroes’ appearances without affecting gameplay fairness. Whether you’re a casual player or a dedicated enthusiast, Neon Injector delivers a seamless and secure customization experience.</p>
+          <p class="mb-6">Our commitment to quality and community feedback sets us apart. Here’s why thousands of players worldwide trust Neon Injector:</p>
+          <ul class="list-disc list-inside space-y-3 mb-6">
+            <li><strong>Universal Compatibility</strong>: Supports all Android devices running version 7.0 (Nougat) or higher, including both rooted and non-rooted devices.</li>
+            <li><strong>Secure Integration</strong>: Utilizes Storage Access Framework (SAF) and Shizuku for safe and compliant file access, protecting your device’s data.</li>
+            <li><strong>Frequent Updates</strong>: Regular patches ensure compatibility with the latest Mobile Legends versions, keeping your skins functional and up-to-date.</li>
+            <li><strong>User-Friendly Interface</strong>: Intuitive design makes skin selection and injection accessible to gamers of all skill levels.</li>
+            <li><strong>Active Community Support</strong>: Join our <a href="https://discord.gg/neoninjector" class="text-neon-purple hover:text-neon-purple-light">Discord community</a> or contact us via <a href="/contact" class="text-neon-purple hover:text-neon-purple-light">support@neon-injector.my.id</a> for tips, updates, and assistance.</li>
           </ul>
-          <p class="mt-4">Whether you're a casual player or a dedicated Mobile Legends enthusiast, Neon Injector offers a safe and reliable way to customize your gaming experience.</p>
+          <p class="mb-6">Ready to transform your Mobile Legends experience? Download Neon Injector today and explore our vast skin library. Visit our <a href="/download" class="text-neon-purple hover:text-neon-purple-light">Download page</a> to get started, or check out our <a href="/blog" class="text-neon-purple hover:text-neon-purple-light">Blog</a> for the latest tips and updates.</p>
         </div>
       </section>
-      <br>
       <DeviceSlider client:visible />
-      <br>
       <FeaturesCard client:visible />
-      <br>
       <CommentsSection client:visible />
       <Toast client:idle />
     </main>

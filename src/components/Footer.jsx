@@ -20,9 +20,10 @@ export default function Footer() {
         </nav>
         <nav className="text-[var(--text-color)] text-sm sm:text-base" aria-label="Footer navigation">
           <a href="/privacy-policy" className="hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">Privacy Policy</a> |{' '}
-          <a href="/contact-us" className="hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">Contact Us</a> |{' '}
+          <a href="/contact" className="hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">Contact Us</a> |{' '}
           <a href="/about" className="hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">About</a> |{' '}
-          <a href="/terms-service" className="hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">Terms of Service</a>
+          <a href="/terms-service" className="hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">Terms of Service</a> |{' '}
+          <a href="/sitemap" className="hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">Sitemap</a>
         </nav>
         <div className="text-[var(--text-color)] text-sm sm:text-base md:text-right">
           <p>© 2025 Neon Injector. All rights reserved.</p>

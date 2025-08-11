@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Mengimpor semua file .astro di src/pages/ dan mengambil frontmatter
+const pagesGlob = import.meta.glob('../pages/*.astro', { eager: true });
+const pageList = Object.entries(pagesGlob).map(([path, module]) => {
+  let url = path.replace('../pages/', '').replace('.astro', '');
+  if (url === 'index') url = '/';
+  // Mengambil title dari frontmatter (default ke URL jika tidak ada)
+  const title = module.frontmatter?.title || (url === '/' ? 'Home' : url.charAt(1).toUpperCase() + url.slice(2));
+  return { url, title };
+}).filter(page => !page.url.includes('404')); // Mengecualikan halaman 404
+---
+
+<Layout
+  title="Sitemap - Neon Injector"
+  description="Explore the sitemap of Neon Injector to navigate all pages, including Home, Download, Docs, Blog, Team, and more."
+>
+  <div class="flex flex-col min-h-screen">
+    <main class="flex-1 pt-16">
+      <section class="container mx-auto px-4 py-16 text-[var(--text-color)]">
+        <h1 class="text-4xl md:text-5xl font-bold text-neon-purple mb-6 text-center">Sitemap</h1>
+        <div class="prose max-w-3xl mx-auto">
+          <p class="text-lg mb-6 text-center">Welcome to the Neon Injector sitemap. Below is an automatically generated list of all pages on our website, including their titles. This page updates dynamically whenever new pages are added, helping you navigate our content easily. Whether you're looking for guides, team information, or community resources, you can find everything here.</p>
+          
+          <h2 class="text-2xl md:text-3xl font-semibold text-neon-purple mb-4">All Pages</h2>
+          <ul class="list-disc list-inside space-y-3 mb-6">
+            {pageList.sort((a, b) => a.url.localeCompare(b.url)).map(({ url, title }) => (
+              <li>
+                <a href={url} class="text-neon-purple hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                  {title}
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          <h2 class="text-2xl md:text-3xl font-semibold text-neon-purple mb-4">Connect With Us</h2>
+          <p class="mb-6 text-center">Join our community to stay informed and share your feedback. Visit our <a href="https://discord.gg/neoninjector" class="text-neon-purple hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">Discord server</a> or contact us via our <a href="/contact" class="text-neon-purple hover:text-neon-purple-light transition focus:outline-none focus:ring-2 focus:ring-neon-purple">Contact page</a> for support.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>

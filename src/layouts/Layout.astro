@@ -10,22 +10,22 @@ import '../styles/global.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{Astro.props.title} | Neon Injector</title>
-    <meta name="description" content={Astro.props.description} />
+    <title>{Astro.props.title || 'Neon Injector'}</title>
+    <meta name="description" content={Astro.props.description || 'Neon Injector for Mobile Legends skin injection'} />
     <meta name="keywords" content="Neon Injector, Mobile Legends, skin injector, Android, gaming" />
     <meta name="author" content="Neon Injector Team" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content={Astro.props.title} />
-    <meta property="og:description" content={Astro.props.description} />
+    <meta property="og:title" content={Astro.props.title || 'Neon Injector'} />
+    <meta property="og:description" content={Astro.props.description || 'Neon Injector for Mobile Legends skin injection'} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://neon-injector.my.id" />
-    <meta property="og:image" content="https://neon-injector.my.id/og-image.webp" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content="/banner.webp" />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:site_name" content="Neon Injector" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={Astro.props.title} />
-    <meta name="twitter:description" content={Astro.props.description} />
-    <meta name="twitter:image" content="https://neon-injector.my.id/og-image.webp" />
+    <meta name="twitter:title" content={Astro.props.title || 'Neon Injector'} />
+    <meta name="twitter:description" content={Astro.props.description || 'Neon Injector for Mobile Legends skin injection'} />
+    <meta name="twitter:image" content="/banner.webp" />
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sansita:wght@400;700;800;900&display=swap" as="style" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sansita:wght@400;700;800;900&display=swap" media="print" onload="this.media='all'" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

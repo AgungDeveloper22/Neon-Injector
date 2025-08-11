@@ -4,13 +4,23 @@ import { loadSlim } from '@tsparticles/slim';
 
 export default function ParticlesBackground() {
   const [isDark, setIsDark] = useState(false);
+  const [init, setInit] = useState(false); // State untuk melacak inisialisasi engine
   const [isVisible, setIsVisible] = useState(false);
 
+  // Inisialisasi Particles Engine
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+      setInit(true); // Tandai inisialisasi selesai
+    }).catch((error) => {
+      console.error('Failed to initialize particles engine:', error);
+    });
+  }, []);
+
+  // IntersectionObserver untuk lazy loading
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if全世界
-
         if (entry.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
@@ -25,13 +35,8 @@ export default function ParticlesBackground() {
     return () => observer.disconnect();
   }, []);
 
+  // Deteksi tema gelap
   useEffect(() => {
-    if (!isVisible) return;
-
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    });
-
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme');
     const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
@@ -43,21 +48,21 @@ export default function ParticlesBackground() {
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
     return () => observer.disconnect();
-  }, [isVisible]);
+  }, []);
 
   const options = useMemo(
     () => ({
       background: { color: { value: 'transparent' } },
       particles: {
         number: { value: 50, density: { enable: true, value_area: 800 } },
-        color: { value: '#a855f7' },
+        color: { value: isDark ? '#a855f7' : '#4b0082' }, // Warna berbeda untuk tema terang/gelap
         shape: { type: 'circle' },
         opacity: { value: 0.4, random: true },
         size: { value: 3, random: true },
         links: {
           enable: true,
           distance: 120,
-          color: '#c084fc',
+          color: isDark ? '#c084fc' : '#800080',
           opacity: 0.3,
           width: 1,
         },
@@ -81,12 +86,26 @@ export default function ParticlesBackground() {
         detectRetina: true,
       },
     }),
-    [isVisible]
+    [isDark] // Dependensi hanya pada isDark
   );
 
-  if (!isVisible) {
-    return <div id="particlesBackground" className="absolute inset-0 pointer-events-none z-0" role="presentation"></div>;
+  if (!isVisible || !init) {
+    return (
+      <div
+        id="particlesBackground"
+        className="absolute inset-0 pointer-events-none z-0"
+        role="presentation"
+        style={{ minHeight: '100vh' }} // Pastikan elemen memiliki tinggi
+      />
+    );
   }
 
-  return <Particles id="tsparticles" options={options} className="absolute inset-0 pointer-events-none z-0" />;
+  return (
+    <Particles
+      id="tsparticles"
+      options={options}
+      className="absolute inset-0 pointer-events-none z-0"
+      style={{ minHeight: '100vh' }} // Pastikan elemen memiliki tinggi
+    />
+  );
 }
