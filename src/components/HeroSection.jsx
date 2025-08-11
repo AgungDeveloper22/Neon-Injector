@@ -163,8 +163,8 @@ export default function HeroSection() {
         <meta itemProp="name" content="Neon Injector" />
         <meta itemProp="applicationCategory" content="Tools" />
         <meta itemProp="operatingSystem" content="Android" />
-        <meta itemProp="softwareVersion" content="1.0" />
-        <meta itemProp="fileSize" content="8MB" />
+        <meta itemProp="softwareVersion" content="1.3" />
+        <meta itemProp="fileSize" content="4.5MB" />
         <meta itemProp="price" content="0" />
         <meta itemProp="priceCurrency" content="USD" />
         <meta itemProp="author" content="Agung Developer" />
@@ -294,13 +294,13 @@ export default function HeroSection() {
                   <td className="px-3 py-2 flex items-center border-neon">
                     <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]" aria-hidden="true">ℹ️</span> Version
                   </td>
-                  <td className="px-3 py-2 border-neon">1.0</td>
+                  <td className="px-3 py-2 border-neon">1.3</td>
                 </tr>
                 <tr>
                   <td className="px-3 py-2 flex items-center border-neon">
                     <span className="w-4 h-4 mr-1.5 text-[var(--heading-color)]" aria-hidden="true">ℹ️</span> Size
                   </td>
-                  <td className="px-3 py-2 border-neon">8MB</td>
+                  <td className="px-3 py-2 border-neon">4.5MB</td>
                 </tr>
                 <tr>
                   <td className="px-3 py-2 flex items-center border-neon">
